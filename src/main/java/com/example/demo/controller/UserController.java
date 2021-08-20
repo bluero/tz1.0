@@ -67,14 +67,22 @@ public class UserController {
     }
 
     @RequestMapping("add")
-    public String add(User user){
+    @ResponseBody
+    public ApiResult<User> add(User user){
+        ApiResult<User> resp=new ApiResult<>();
         userService.insertUser(user);
-        return "OK";
+        resp.setMessage("ok");
+        return resp;
     }
 
     @RequestMapping("queryUserByLoginName")
-    public String queryUserByLoginName(){
-        return "login";
+    @ResponseBody
+    public ApiResult<User> queryUserByLoginName(String loginName ){
+        ApiResult<User> resp=new ApiResult<>();
+        User user1=userService.selectByLoginName(loginName);
+        resp.setData(user1);
+        return resp;
+
     }
 
     @RequestMapping("showAllUser")
@@ -84,6 +92,7 @@ public class UserController {
         List<User> userList=userMapper.selectList(null);
         System.out.println(userList);
         resp.setData(userList);
+        resp.setMessage("OK");
         return resp;
     }
 
@@ -92,7 +101,7 @@ public class UserController {
     public void deleteUser(long userId){
 
         userService.deleteById(userId);
-
+        return;
     }
 
 

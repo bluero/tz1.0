@@ -20,12 +20,14 @@ class Demo2ApplicationTests {
     void contextLoads() {
 //        User user=new User(4l,"admin","admin","admin",null,"1","2");
 //        userService.deleteById(user);
-
 //        User user=new User();
 //        user.setUser_id(2l);
 //        user.setCreate_time(null);
 //        user.setPassword_md5("1111");
 //        userMapper.insert(user);
+        User user=new User(null,"admin","admin","",null,"","");
+        userService.insertUser(user);
+
     }
 
 }
