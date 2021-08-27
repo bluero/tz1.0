@@ -2,9 +2,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/tz?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://192.168.56.10:3306/tz?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
     username: root
-    password: 123456
+    password: root
   thymeleaf:
     prefix: classpath:/templates/
     mode: HTML

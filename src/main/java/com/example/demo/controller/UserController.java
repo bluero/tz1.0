@@ -104,6 +104,16 @@ public class UserController {
         return;
     }
 
+    @RequestMapping("updatePass")
+    @ResponseBody
+    public void updatePass(){
 
+    }
+
+    @RequestMapping("assignPermissions")
+    @ResponseBody
+    public void assignPermissions(long userId){
+
+    }
 
 }
