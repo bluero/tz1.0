@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.mapper.LabelMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.DrawingEntity">
+    </resultMap>
+    <select id="selectLabelList" resultMap="BaseResultMap" parameterType="java.util.ArrayList">
+        select *
+        FROM tz_drawing t
+        where 1 = 1
+        <foreach collection="list" item="item" open="" separator="" close="">
+            AND (SELECT drawing_id FROM tz_label WHERE drawing_id=t.drawing_id AND drawing_label=#{item}) IS NOT NULL
+        </foreach>
+
+    </select>
+
+    <select id="selectTextAndLabelList" resultMap="BaseResultMap">
+        select *
+        FROM tz_drawing t
+        where 1 = 1
+        AND t.drawing_name LIKE CONCAT('%', #{name}, '%')
+        <foreach collection="list" item="item" open="" separator="" close="">
+            AND (SELECT drawing_id FROM tz_label WHERE drawing_id=t.drawing_id AND drawing_label=#{item}) IS NOT NULL
+        </foreach>
+
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap">
+        select *
+        FROM tz_drawing
+        where drawing_name LIKE CONCAT('%', #{name}, '%')
+    </select>
+</mapper>
