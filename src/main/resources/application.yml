@@ -2,7 +2,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.56.10:3306/tz?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://210.30.97.234:3306/tz?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
     username: root
     password: root
   thymeleaf:
@@ -13,11 +13,22 @@ spring:
     servlet:
       content-type: text/html
 
+  resources:
+    static-locations:
+      - classpath:resources
+      - classpath:static
+
+  redis:
+    host: 210.30.97.234
+    port: 6379
+
+
+
 
 mybatis-plus:
   # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
   # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
-  mapper-locations: classpath:mybatis/mappers/*Mapper.xml
+  mapper-locations: classpath:/com/example/demo/mapper/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: cn.saytime.model
   global-config:
@@ -44,4 +55,3 @@ mybatis-plus:
     cache-enabled: false
     #配置JdbcTypeForNull
     jdbc-type-for-null: 'null'
-
